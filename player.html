@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 Custom Player</title>
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="parent">
+    <div id="vidcontrols">
+        <div id="timeslider">
+        </div>
+        <div id="playpause" class="left-controls">
+        </div>
+        <div id="audio" class="volume-wrap">
+            <button id="volume"><span class="fa fa-volume-up"></span></button>
+            <div id="volume-panel" class="volume-panel">
+                <div id="volume-slider" class="volume-slider">
+                    <div class="volume-slider-track">
+                        <div class="volume-slider-progress">
+                            <div class="volume-slider-handle"></div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="time" class="left-controls">
+            <span class="time-current"></span>
+            <span class="time-separator"> / </span>
+            <span class="time-duration"></span>
+        </div>
+        <div id="fullscreen" class="right-controls">
+            <button class="control-button" id="fullscreen">
+                <svg width="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+                    <g class="ytp-fullscreen-button-corner-0">
+                        <use class="ytp-svg-shadow" xlink:href="#ytp-id-23"></use>
+                        <path class="svg-fill" d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" id="ytp-id-23"></path>
+                    </g>
+                    <g class="ytp-fullscreen-button-corner-1">
+                        <use class="ytp-svg-shadow" xlink:href="#ytp-id-24"></use>
+                        <path class="svg-fill" d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" id="ytp-id-24"></path>
+                    </g>
+                    <g class="ytp-fullscreen-button-corner-2">
+                        <use class="ytp-svg-shadow" xlink:href="#ytp-id-25"></use>
+                        <path class="svg-fill" d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" id="ytp-id-25"></path>
+                    </g>
+                    <g class="ytp-fullscreen-button-corner-3">
+                        <use class="ytp-svg-shadow" xlink:href="#ytp-id-26"></use>
+                        <path class="svg-fill" d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" id="ytp-id-26"></path>
+                    </g>
+                </svg>
+            </button> 
+        </div>
+        <div id="settings" class="right-controls">
+            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+                <use class="ytp-svg-shadow" xlink:href="#ytp-id-19"></use>
+                <path d="m 23.94,18.78 c .03,-0.25 .05,-0.51 .05,-0.78 0,-0.27 -0.02,-0.52 -0.05,-0.78 l 1.68,-1.32 c .15,-0.12 .19,-0.33 .09,-0.51 l -1.6,-2.76 c -0.09,-0.17 -0.31,-0.24 -0.48,-0.17 l -1.99,.8 c -0.41,-0.32 -0.86,-0.58 -1.35,-0.78 l -0.30,-2.12 c -0.02,-0.19 -0.19,-0.33 -0.39,-0.33 l -3.2,0 c -0.2,0 -0.36,.14 -0.39,.33 l -0.30,2.12 c -0.48,.2 -0.93,.47 -1.35,.78 l -1.99,-0.8 c -0.18,-0.07 -0.39,0 -0.48,.17 l -1.6,2.76 c -0.10,.17 -0.05,.39 .09,.51 l 1.68,1.32 c -0.03,.25 -0.05,.52 -0.05,.78 0,.26 .02,.52 .05,.78 l -1.68,1.32 c -0.15,.12 -0.19,.33 -0.09,.51 l 1.6,2.76 c .09,.17 .31,.24 .48,.17 l 1.99,-0.8 c .41,.32 .86,.58 1.35,.78 l .30,2.12 c .02,.19 .19,.33 .39,.33 l 3.2,0 c .2,0 .36,-0.14 .39,-0.33 l .30,-2.12 c .48,-0.2 .93,-0.47 1.35,-0.78 l 1.99,.8 c .18,.07 .39,0 .48,-0.17 l 1.6,-2.76 c .09,-0.17 .05,-0.39 -0.09,-0.51 l -1.68,-1.32 0,0 z m -5.94,2.01 c -1.54,0 -2.8,-1.25 -2.8,-2.8 0,-1.54 1.25,-2.8 2.8,-2.8 1.54,0 2.8,1.25 2.8,2.8 0,1.54 -1.25,2.8 -2.8,2.8 l 0,0 z"
+                    fill="#fff" id="ytp-id-19"></path>
+            </svg>
+        </div>
+    </div>
+    <video src="youtube/A Phone with... 4TB Storage!.mp4" id="vid" preload="auto"></video>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="js/player.js"></script>
+</body>
+</html>

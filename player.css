@@ -1,0 +1,201 @@
+:root {
+    --controls-opacity: 0;
+    --controls-height: 47px;
+    /* var(--controls-height); */
+    --audio-width: 50px;
+    --volume-panel-width: 0px;
+}
+video::-webkit-media-controls-overlay-enclosure {
+    display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+video::-webkit-media-controls {
+    display: none !important;
+}
+#parent {
+    width: 840px;
+    height: 472px;
+    margin: 0 auto;
+    position: relative;
+}
+#vidcontrols {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--controls-height);
+    background-color: black;
+    transition: opacity .1s ease-in;
+    background-color: transparent;
+    opacity: var(--controls-opacity);
+    direction: ltr;
+    z-index: 2147483648;
+}
+.corsor{
+    cursor: none !important;
+}
+/* #parent:hover {
+    --controls-opacity: .9;
+} */
+
+#timeslider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+}
+
+#vid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#playpause {
+    float: left;
+    height: var(--controls-height);
+    width: 50px;
+    background-color: yellow;
+}
+/*
+Add media querie to show slider when audio is 150px with display css
+*/
+/*
+Add time hover like youtube with JS, if time hover over with mouse check if audio's is 150px, if true keep the value at 150px use youtube as example
+*/
+#volume {
+    float: left;
+}
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 0 10px;
+    height: var(--controls-height);
+    outline: none;
+    transition: color 0.2s;
+    cursor: pointer;
+    float: left;
+}
+
+button:hover {
+    color: white;
+}
+
+.volume-wrap {
+    padding: 0 10px 0 0;
+    display: inline-block;
+}
+
+.volume-wrap #bsp-volume {
+    float: left;
+}
+
+.volume-wrap.volume-show button {
+    color: white;
+}
+
+.volume-wrap.volume-show .volume-panel {
+    width: 73px;
+}
+.volume-show{
+    width: 73px;
+}
+.volume-wrap .volume-panel {
+    float: left;
+    height: var(--controls-height);
+    width: 0;
+    overflow: hidden;
+    transition: width 0.2s;
+    cursor: pointer;
+}
+
+.volume-wrap .volume-panel .volume-slider {
+    position: relative;
+    height: 100%;
+}
+
+.volume-wrap .volume-panel .volume-slider-track {
+    height: 2px;
+    width: 70px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -1px;
+    background: white;
+}
+
+.volume-wrap .volume-panel .volume-slider-progress {
+    height: 100%;
+    width: 0%;
+    background: red;
+    position: relative;
+}
+
+.volume-wrap .volume-panel .volume-slider-handle {
+    height: 12px;
+    width: 3px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    background: white;
+}
+#time {
+    float: left;
+    width: 100px;
+    height: 40px;
+    /* 40px because 7px padding  */
+    background-color: Grey;
+    padding-top: 7px;
+    font-size: 121%;
+    white-space: nowrap;
+    line-height: 35px;
+    color: white;
+    text-align: center;
+}
+.right-controls {
+    float: right;
+    width: 50px;
+    height: var(--controls-height);
+}
+
+#fullscreen-btn{
+    color: white;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding: none;
+    margin: none;
+}
+svg{
+    padding-top: 2px;
+    height: var(--controls-height);
+    width: 50px;
+    color: white;
+    cursor: pointer;
+}
+.svg-fill{
+    fill: white;
+}
+.control-button{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    text-align: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    cursor: default;
+    line-height: inherit;
+}
