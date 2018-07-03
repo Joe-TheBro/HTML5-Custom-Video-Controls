@@ -9,12 +9,14 @@ var audio = document.getElementById('audio');
 var $audiobar = $("#volume-slider");
 var audiobar = document.getElementById("volume-panel");
 var parent = document.getElementById("parent");
+var playpbutton = document.getElementById("playpbutton");
 var vidplay = false;
 var audhover = false;
 var parhover = false;
 var parwhile = true;
 var audslidtimeout;
 var timeout;
+var parinterval;
 vid.addEventListener("play", function(){
 vidplay = true;
 });
@@ -31,6 +33,12 @@ audiobarhide();
 });
 parent.addEventListener("mouseenter", function() {
 parhover = true;
+videoDuration = vid.duration;
+parinterval = setInterval(function(){
+if(videoCurrentTime != vid.currentTime){
+  videoCurrentTime = vid.currentTime;
+}
+}, 1000);
 parent.onmousemove = function(){
   clearTimeout(timeout);
   vidcontrol.style.opacity = ".9";
@@ -38,12 +46,13 @@ parent.onmousemove = function(){
   timeout = setTimeout(function(){
   parent.style.cursor = "none";
   vidcontrol.style.opacity = "0";
-  }, 3000);
+  }, 2500);
 }
 });
 parent.addEventListener("mouseleave", function () {
   parhover = false;
   clearTimeout(timeout);
+  clearInterval(parinterval);
   vidcontrol.style.opacity = "0";
 });
 // parent.onmousemove = function(){
@@ -71,9 +80,11 @@ function audiobarhide(){
 $playercontrol.click(function(){
   if(!vidplay){
       vid.play();
+      playpbutton.innerHTML = "pause";
   }
   else{
       vid.pause();
+      playpbutton.innerHTML = "play_arrow";
       vidplay = false;
   }
 });

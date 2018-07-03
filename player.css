@@ -41,7 +41,9 @@ video::-webkit-media-controls {
 /* #parent:hover {
     --controls-opacity: .9;
 } */
-
+#audio{
+    padding-top: 2px;
+}
 #timeslider {
     position: absolute;
     top: 0;
@@ -64,7 +66,7 @@ video::-webkit-media-controls {
     float: left;
     height: var(--controls-height);
     width: 50px;
-    background-color: yellow;
+    
 }
 /*
 Add media querie to show slider when audio is 150px with display css
