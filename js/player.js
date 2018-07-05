@@ -10,6 +10,7 @@ var $audiobar = $("#volume-slider");
 var audiobar = document.getElementById("volume-panel");
 var parent = document.getElementById("parent");
 var playpbutton = document.getElementById("playpbutton");
+var volumebutton = document.getElementById("volumebt");
 var vidplay = false;
 var audhover = false;
 var parhover = false;
@@ -17,6 +18,7 @@ var parwhile = true;
 var audslidtimeout;
 var timeout;
 var parinterval;
+var interval;
 vid.addEventListener("play", function(){
 vidplay = true;
 });
@@ -31,14 +33,27 @@ audio.addEventListener("mouseout", function(){
 audhover = false;
 audiobarhide();
 });
-parent.addEventListener("mouseenter", function() {
-parhover = true;
-videoDuration = vid.duration;
-parinterval = setInterval(function(){
+$(document).ready(function(){
+  videoDuration = vid.duration;
+  interval = setInterval(function(){
+var volume = vid.volume;
+if(volume == 0){
+  volumebutton.innerHTML = "volume_off";
+}
+else if(volume < 0.5){
+  volumebutton.innerHTML = "volume_down";
+}
+else{
+  volumebutton.innerHTML = "volume_up";
+}
 if(videoCurrentTime != vid.currentTime){
   videoCurrentTime = vid.currentTime;
 }
-}, 1000);
+  }, 10);
+})
+
+parent.addEventListener("mouseenter", function() {
+parhover = true;
 parent.onmousemove = function(){
   clearTimeout(timeout);
   vidcontrol.style.opacity = ".9";
@@ -52,7 +67,6 @@ parent.onmousemove = function(){
 parent.addEventListener("mouseleave", function () {
   parhover = false;
   clearTimeout(timeout);
-  clearInterval(parinterval);
   vidcontrol.style.opacity = "0";
 });
 // parent.onmousemove = function(){
