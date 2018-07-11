@@ -16,7 +16,9 @@ var audhover = false;
 var parhover = false;
 var parwhile = true;
 var audslidtimeout;
+var volume;
 var timeout;
+var savedVolume;
 var parinterval;
 var interval;
 vid.addEventListener("play", function(){
@@ -36,21 +38,24 @@ audiobarhide();
 $(document).ready(function(){
   videoDuration = vid.duration;
   interval = setInterval(function(){
-var volume = vid.volume;
-if(volume == 0){
+volume = vid.volume;
+if(volume != 0){
+  savedVolume = volume;
+}
+if(volume == 0 && volumebutton.innerHTML != "volume_off"){
   volumebutton.innerHTML = "volume_off";
 }
-else if(volume < 0.5){
+else if (volume < 0.5 && volume != 0 && volumebutton.innerHTML != "volume_down"){
   volumebutton.innerHTML = "volume_down";
 }
-else{
+else if (volume > 0.5 && volumebutton.innerHTML != "volume_up"){
   volumebutton.innerHTML = "volume_up";
 }
 if(videoCurrentTime != vid.currentTime){
   videoCurrentTime = vid.currentTime;
 }
   }, 10);
-})
+});
 
 parent.addEventListener("mouseenter", function() {
 parhover = true;
@@ -59,8 +64,10 @@ parent.onmousemove = function(){
   vidcontrol.style.opacity = ".9";
   parent.style.cursor = "default";
   timeout = setTimeout(function(){
-  parent.style.cursor = "none";
-  vidcontrol.style.opacity = "0";
+    if(vidplay == true){
+      parent.style.cursor = "none";
+      vidcontrol.style.opacity = "0";
+    }
   }, 2500);
 }
 });
@@ -68,6 +75,15 @@ parent.addEventListener("mouseleave", function () {
   parhover = false;
   clearTimeout(timeout);
   vidcontrol.style.opacity = "0";
+});
+volumebutton.addEventListener("click", function () {
+  console.log("clicked");
+  if(volume != 0){
+    vid.volume = 0;
+  }
+  else{
+    vid.volume = savedVolume;
+  }
 });
 // parent.onmousemove = function(){
 //   clearTimeout(timeout);
