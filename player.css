@@ -159,7 +159,7 @@ button:hover {
     /* 40px because 7px padding  */
     background-color: Grey;
     padding-top: 7px;
-    font-size: 121%;
+    font-size: 100%;
     white-space: nowrap;
     line-height: 35px;
     color: white;

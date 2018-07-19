@@ -11,6 +11,10 @@ var audiobar = document.getElementById("volume-panel");
 var parent = document.getElementById("parent");
 var playpbutton = document.getElementById("playpbutton");
 var volumebutton = document.getElementById("volumebt");
+var spanCurrentTime = document.getElementById('time-current');
+var spanDuration = document.getElementById('time-duration');
+var videoDuration;
+var videoCurrentTime;
 var vidplay = false;
 var audhover = false;
 var parhover = false;
@@ -36,8 +40,14 @@ audhover = false;
 audiobarhide();
 });
 $(document).ready(function(){
-  videoDuration = vid.duration;
+  setTimeout(function(){
+    videoDuration = vid.duration;
+    spanDuration.innerHTML = videoDuration;
+  }, 100);
   interval = setInterval(function(){
+    if(spanCurrentTime != videoCurrentTime){
+      spanCurrentTime.innerHTML = videoCurrentTime;
+    }
 volume = vid.volume;
 if(volume != 0){
   savedVolume = volume;
@@ -152,7 +162,4 @@ function fullscreen() {
     }
   }
 }
-var spanCurrentTime = document.getElementById('time-current');
-var spanDuration = document.getElementById('time-duration');
-var videoDuration = vid.duration;
-var videoCurrentTime = vid.currentTime;
+
